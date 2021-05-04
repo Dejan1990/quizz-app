@@ -14,7 +14,8 @@ class QuizController extends Controller
      */
     public function index()
     {
-        
+        $quizzes = (new Quiz)->allQuiz();
+        return view('backend.quiz.index',compact('quizzes'));
     }
 
     /**

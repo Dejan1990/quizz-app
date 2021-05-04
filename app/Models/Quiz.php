@@ -26,4 +26,9 @@ class Quiz extends Model
     {
     	return Quiz::create($data);
     }
+
+    public function allQuiz()
+    {
+    	return Quiz::all();
+    }
 }

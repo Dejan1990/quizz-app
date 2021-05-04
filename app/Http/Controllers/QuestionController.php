@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Question;
+use App\Models\Answer;
 
 class QuestionController extends Controller
 {
@@ -34,7 +36,10 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $question = (new Question)->storeQuestion($data);
+        $answer = (new Answer)->storeAnswer($data,$question);
+        return redirect()->route('question.index')->with('message','Question created successfully!');
     }
 
     /**
@@ -80,5 +85,16 @@ class QuestionController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function validateForm($request){
+        return $this->validate($request,[
+            'quiz'=>'required',
+            'question'=>'required',
+            'options'=>'required|array|min:3',
+            'options.*'=>'required|string|distinct',
+            'correct_answer'=>'required'
+
+        ]);
     }
 }

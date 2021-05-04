@@ -27,7 +27,7 @@
                  <div class="control-group">
 				<label class="control-lable" for="name">Choose Quiz</label>
 				<div class="controls"> 
-					<select name="quiz" class="span8 ">
+					<select name="quiz" class="span8">
 						@foreach(App\Models\Quiz::all() as $quiz)
 						    <option value="{{$quiz->id}}">{{$quiz->name}}</option>
 						@endforeach

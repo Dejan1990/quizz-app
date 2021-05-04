@@ -52,10 +52,21 @@
 
 									  <td>
 
-                                        <a href="#">
-                                            <button class="btn btn-danger">Delete</button>
+                                        <form id="delete-form{{$quiz->id}}" method="POST" action="{{route('quiz.destroy',[$quiz->id])}}">
+                                            @csrf
+                                            @method('DELETE')
+                                        </form>
+                                        <a href="#" onclick="if(confirm('Do you want to delete?')){
 
-                                        </a>
+                                            event.preventDefault();
+                                            document.getElementById('delete-form{{$quiz->id}}').submit()
+                                        }else{
+                                            event.preventDefault();
+                                        }
+
+                                        ">
+                                        <input type="submit" value="Delete" class="btn btn-danger">
+                                    </a>
 
 
 

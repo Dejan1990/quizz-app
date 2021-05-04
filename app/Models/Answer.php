@@ -16,7 +16,8 @@ class Answer extends Model
     	return $this->belongsTo(Question::class);
     }
 
-    public function storeAnswer($data,$question){
+    public function storeAnswer($data,$question)
+	{
     	foreach($data['options'] as $key=>$option){
     		$is_correct = false;
     		if($key==$data['correct_answer']){
@@ -30,5 +31,16 @@ class Answer extends Model
     		]);
 
     	}
+    }
+
+	public function updateAnswer($data,$question)
+	{
+        $this->deleteAnswer($question->id);
+        $this->storeAnswer($data,$question);
+    }
+
+	public function deleteAnswer($questionId)
+	{
+        Answer::where('question_id',$questionId)->delete();
     }
 }

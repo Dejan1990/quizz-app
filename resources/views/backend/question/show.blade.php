@@ -54,7 +54,9 @@
                                 </div>
 
                                 <div class="module-foot">
-                                   <a href="#"> <button class="btn btn-primary">Edit</button></a>
+                                    <a href="{{route('question.edit',[$question->id])}}"> 
+                                        <button class="btn btn-primary">Edit</button>
+                                    </a>
                                     
                                    <a href="#"> <button class="btn btn-danger">Delete</button></a>
 

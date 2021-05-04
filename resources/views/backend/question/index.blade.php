@@ -41,11 +41,9 @@
 									  </td>
 									  
 									  <td>
-									  		<a href="#">
-									  			<button class="btn btn-primary">Edit</button>
-
-									  		</a>
-
+										<a href="{{route('question.edit',[$question->id])}}">
+											<button class="btn btn-primary">Edit</button>
+										</a>
 									  </td>
 									  <td>
 

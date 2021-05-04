@@ -43,10 +43,10 @@
 									  </td>
 									  
 									  <td>
-									  		<a href="#">
-									  			<button class="btn btn-primary">Edit</button>
+                                        <a href="{{route('quiz.edit',[$quiz->id])}}">
+                                            <button class="btn btn-primary">Edit</button>
 
-									  		</a>
+                                        </a>
 
 									  </td>
 

@@ -15,7 +15,9 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        //
+        // ,ozda ovde moze da se koristi load answer, proveriti
+        $questions = (new Question)->getQuestions();
+        return view('backend.question.index',compact('questions'));
     }
 
     /**

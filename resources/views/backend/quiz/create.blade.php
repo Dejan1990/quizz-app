@@ -14,7 +14,7 @@
 
 
 
-     <form action="#" method="POST">
+     <form action="{{route('quiz.store')}}" method="POST">
         @csrf
 			
 	<div class="module">
@@ -26,7 +26,7 @@
                  <div class="control-group">
 				<label class="control-lable" for="name">Quiz name</label>
 				<div class="controls"> 
-					<input type="text" name="name" class="span8 @error('name') border-red @enderror" placeholder="name of a quiz" value=" {{old('name')}}   " >
+					<input type="text" name="name" class="span8 @error('name') border-red @enderror" placeholder="name of a quiz" value="{{old('name')}}">
 				</div>
 			     @error('name')
 			    <span class="invalid-feedback" role="alert">
@@ -39,7 +39,7 @@
 			<div class="control-group">
 				<label class="control-lable" for="name">Description</label>
 				<div class="controls">
-					<textarea name="description" class="span8 @error('description') is-invalid @enderror"> {{old('description')}}   </textarea>
+					<textarea name="description" class="span8 @error('description') is-invalid @enderror">{{old('description')}}</textarea>
 				</div>
 			        @error('description')
 			        <span class="invalid-feedback" role="alert">

@@ -21,4 +21,9 @@ class Quiz extends Model
         //return $this->belongsToMany(User::class,'quiz_user');
         return $this->belongsToMany(User::class,'quiz_user');
     }
+
+    public function storeQuiz($data)
+    {
+    	return Quiz::create($data);
+    }
 }

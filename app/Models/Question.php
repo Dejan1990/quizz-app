@@ -52,4 +52,9 @@ class Question extends Model
         $question->save();
         return $question;
     }
+
+    public function deleteQuestion($id)
+    {
+        Question::where('id',$id)->delete();
+    }
 }

@@ -24,6 +24,15 @@
                     <!--/.widget-nav-->
 
                     <ul class="widget widget-menu unstyled">
+                                
+                        <li><a href="{{route('user.create')}}"><i class="menu-icon icon-bullhorn"></i> Create User </a>
+                        </li>
+                        <li><a href="{{route('user.index')}}"><i class="menu-icon icon-inbox"></i>View User <b class="label green pull-right">
+                            </b> </a></li>
+                        
+                    </ul>
+
+                    <ul class="widget widget-menu unstyled">
                         <li><a href="ui-button-icon.html"><i class="menu-icon icon-bold"></i> Buttons </a></li>
                         <li><a href="ui-typography.html"><i class="menu-icon icon-book"></i>Typography </a></li>
                         <li><a href="form.html"><i class="menu-icon icon-paste"></i>Forms </a></li>

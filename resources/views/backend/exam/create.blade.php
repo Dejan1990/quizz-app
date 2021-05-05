@@ -14,7 +14,7 @@
 
 
 
-     <form action="#" method="POST">
+     <form action="{{ route('exam.assign') }}" method="POST">
         @csrf
 			
 	<div class="module">

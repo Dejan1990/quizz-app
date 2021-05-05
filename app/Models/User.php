@@ -20,7 +20,7 @@ class User extends Authenticatable
         'name', 'email', 'password','visible_password','occupation','address','phone','is_admin'
     ];
 
-    //private $limit=10;
+    private $limit=10;
 
     /**
      * The attributes that should be hidden for arrays.
@@ -41,11 +41,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function storeUser($data){
+    public function storeUser($data)
+    {
         $data['visible_password'] = $data['password'];
         $data['password'] = bcrypt($data['password']);
         $data['is_admin'] = 0;
         return User::create($data);
+    }
 
+    public function allUsers()
+    {
+        return User::latest()->paginate($this->limit);
     }
 }

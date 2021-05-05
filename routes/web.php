@@ -17,16 +17,24 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.index');
-});
-
-Auth::routes();
+Auth::routes([
+    'register' => false,
+    'reset' => false,
+    'verify' => false
+]);
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::resource('quiz', QuizController::class);
-Route::resource('question', QuestionController::class);
-Route::resource('user', UserController::class);
+Route::group(['middleware' => 'isAdmin'], function () {
+    Route::get('/', function () {
+        return view('admin.index');
+    });
 
-Route::get('/quiz/{id}/questions', [QuizController::class, 'question'])->name('quiz.question');
+    Route::resource('quiz', QuizController::class);
+    Route::resource('question', QuestionController::class);
+    Route::resource('user', UserController::class);
+
+    Route::get('/quiz/{id}/questions', [QuizController::class, 'question'])->name('quiz.question');
+});
+
+

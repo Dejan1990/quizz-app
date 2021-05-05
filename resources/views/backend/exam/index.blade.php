@@ -42,7 +42,7 @@
 									  </td>
 
 									  <td>
-									  	<form action="#" method="POST">
+									  	<form action="{{ route('exam.remove') }}" method="POST">
                                             @csrf
 
 									  		<input type="hidden" name="user_id" value="{{$user->id}}">

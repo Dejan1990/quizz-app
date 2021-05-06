@@ -27,7 +27,8 @@ class ExamController extends Controller
     	return view('backend.exam.index',compact('quizzes'));
     }
 
-    public function removeExam(Request $request){
+    public function removeExam(Request $request)
+    {
     	$userId = $request->get('user_id');
     	$quizId= $request->get('quiz_id');
     	$quiz = Quiz::find($quizId);
@@ -42,7 +43,8 @@ class ExamController extends Controller
     	}
     }
 
-	public function getQuizQuestions(Request $request,$quizId){
+	public function getQuizQuestions(Request $request,$quizId)
+    {
         $authUser=auth()->user()->id;
 
         //check if user has been assigned a particular quiz
@@ -64,5 +66,20 @@ class ExamController extends Controller
         }
 
         return view('quiz',compact('quiz','time','quizQuestions','authUserHasPlayedQuiz'));
+    }
+
+    public function postQuiz(Request $request)
+    {
+        $questionId= $request['questionId'];
+        $answerId = $request['answerId'];
+        $quizId = $request['quizId'];
+
+
+        $authUser = auth()->user();
+
+        return $userQuestionAnswer = Result::updateOrCreate(
+            ['user_id'=> $authUser->id, 'quiz_id'=>$quizId, 'question_id'=>$questionId],
+            ['answer_id'=>$answerId]
+        );
     }
 }
